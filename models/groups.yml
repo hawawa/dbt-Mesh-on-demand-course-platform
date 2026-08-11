@@ -1,0 +1,12 @@
+version: 2
+
+groups:
+  - name: finance
+    owner:
+      email: finance-team@company.com
+      slack: "#team-finance" # optional
+
+  - name: product
+    owner:
+      email: product-team@company.com
+      slack: "#team-product" # optional

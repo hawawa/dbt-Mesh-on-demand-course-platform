@@ -7,6 +7,8 @@ models:
     config:
       contract:
         enforced: true
+      access: public
+      group: finance
     columns:
       - name: order_id
         data_type: varchar
