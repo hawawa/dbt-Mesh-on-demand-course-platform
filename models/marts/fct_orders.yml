@@ -1,0 +1,65 @@
+version: 2
+
+models:
+  - name: fct_orders
+    description: "Fact table containing order-level transactions, customer details, and location metrics."
+    config:
+      contract:
+        enforced: true
+    columns:
+      - name: order_id
+        data_type: varchar
+        description: "Primary key; unique identifier for each order."
+        constraints:
+          - type: primary_key
+          - type: not_null
+
+      - name: location_id
+        data_type: varchar
+        description: "Foreign key linking to the store location."
+
+      - name: customer_id
+        data_type: varchar
+        description: "Foreign key linking to the customer."
+        constraints:
+          - type: not_null
+
+      - name: order_total
+        data_type: number
+        description: "Total financial amount charged for the order."
+
+      - name: tax_paid
+        data_type: number
+        description: "Total sales tax collected on the order."
+
+      - name: ordered_at
+        data_type: timestamp_ntz
+        description: "Timestamp (no time zone) when the order was placed."
+
+      - name: customer_name
+        data_type: varchar
+        description: "Full name of the customer who placed the order."
+
+      - name: location_name
+        data_type: varchar
+        description: "Name of the store location where the transaction occurred."
+
+      - name: tax_rate
+        data_type: number
+        description: "Effective sales tax rate applied to the transaction."
+
+      - name: location_opened_at
+        data_type: timestamp_ntz
+        description: "Timestamp (no time zone) when the store location officially opened."
+
+      - name: ordered_month
+        data_type: number
+        description: "Calendar month (1–12) in which the order was placed."
+
+      - name: ordered_day
+        data_type: number
+        description: "Day of the month (1–31) in which the order was placed."
+
+      - name: ordered_year
+        data_type: number
+        description: "Four-digit calendar year in which the order was placed."

@@ -1,0 +1,61 @@
+version: 2
+
+models:
+  - name: fct_order_items
+    description: "Fact table containing line-item details for each order, including product, location, and customer dimensions."
+    config:
+      contract:
+        enforced: true
+    columns:
+      - name: order_item_id
+        data_type: varchar
+        description: "Primary key; unique identifier for each order line item."
+        constraints:
+          - type: primary_key
+          - type: not_null
+
+      - name: order_id
+        data_type: varchar
+        description: "Foreign key linking to the parent order in fct_orders."
+        constraints:
+          - type: not_null
+
+      - name: product_id
+        data_type: varchar
+        description: "Foreign key linking to the purchased product."
+
+      - name: location_id
+        data_type: varchar
+        description: "Foreign key linking to the store location."
+
+      - name: customer_id
+        data_type: varchar
+        description: "Foreign key linking to the customer."
+
+      - name: order_total
+        data_type: number
+        description: "Total financial amount charged for the order."
+
+      - name: tax_paid
+        data_type: number
+        description: "Total sales tax collected on the order item."
+
+      - name: ordered_at
+        data_type: timestamp_ntz
+        description: "Timestamp (no time zone) when the order was placed."
+
+      - name: customer_name
+        data_type: varchar
+        description: "Full name of the customer who placed the order."
+
+      - name: location_name
+        data_type: varchar
+        description: "Name of the store location where the transaction occurred."
+
+      - name: tax_rate
+        data_type: number
+        description: "Effective sales tax rate applied to the transaction."
+
+      - name: location_opened_at
+        data_type: timestamp_ntz
+        description: "Timestamp (no time zone) when the store location officially opened."

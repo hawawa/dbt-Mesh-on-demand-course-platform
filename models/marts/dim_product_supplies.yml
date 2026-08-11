@@ -1,0 +1,43 @@
+version: 2
+
+models:
+  - name: dim_product_supplies
+    description: "Dimension table containing product supply details, product metadata, categorization flags, and cost metrics."
+    config:
+      contract:
+        enforced: true
+    columns:
+      - name: product_id
+        data_type: varchar
+        description: "Primary key; unique identifier for the product."
+        constraints:
+          - type: primary_key
+          - type: not_null
+
+      - name: product_name
+        data_type: varchar
+        description: "Name of the product."
+
+      - name: product_type
+        data_type: varchar
+        description: "Classification or category of the product."
+
+      - name: product_description
+        data_type: varchar
+        description: "Detailed description of the product."
+
+      - name: product_price
+        data_type: number
+        description: "Retail listing price of the product."
+
+      - name: is_food_item
+        data_type: boolean
+        description: "Boolean flag indicating whether the supply item is classified as food."
+
+      - name: is_drink_item
+        data_type: boolean
+        description: "Boolean flag indicating whether the supply item is classified as a beverage."
+
+      - name: supply_cost
+        data_type: number
+        description: "Cost associated with purchasing or manufacturing the supply item."
