@@ -3,7 +3,7 @@ version: 2
 models:
   - name: fct_orders
     description: "Fact table containing order-level transactions, customer details, and location metrics."
-    latest_version: 2
+    latest_version: 1
     config:
       contract:
         enforced: true
