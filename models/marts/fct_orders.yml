@@ -66,10 +66,9 @@ models:
         description: "Four-digit calendar year in which the order was placed."
     versions:
       - v: 1
-        defined_in: fct_orders_v1
+        alias: fct_orders
 
       - v: 2
-        defined_in: fct_orders_v2
         description: "Version 2 of fct_orders, replacing order_total with order_amount and adding location_ordered_at."
         columns:
           - exclude: [order_total]
