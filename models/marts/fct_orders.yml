@@ -3,6 +3,7 @@ version: 2
 models:
   - name: fct_orders
     description: "Fact table containing order-level transactions, customer details, and location metrics."
+    latest_version: 2
     config:
       contract:
         enforced: true
@@ -63,3 +64,18 @@ models:
       - name: ordered_year
         data_type: number
         description: "Four-digit calendar year in which the order was placed."
+    versions:
+      - v: 1
+        defined_in: fct_orders_v1
+
+      - v: 2
+        defined_in: fct_orders_v2
+        description: "Version 2 of fct_orders, replacing order_total with order_amount and adding location_ordered_at."
+        columns:
+          - exclude: [order_total]
+          - name: order_amount
+            data_type: number
+            description: "Total financial amount charged for the order."
+          - name: location_ordered_at
+            data_type: date
+            description: "Date of the transaction converted to local store location date."
