@@ -22,7 +22,20 @@ vars:
 
 models:
   core_platform:
+    # 3. Require unique and not_null tests for all models in core_platform
+    +meta:
+      required_tests:
+        "unique": 1
+        "not_null": 1
+
     staging:
       +materialized: view
+
     marts:
       +materialized: table
+      # 4. Add relationships test requirement for all marts models
+      +meta:
+        required_tests:
+          "unique": 1
+          "not_null": 1
+          "relationships": 1
